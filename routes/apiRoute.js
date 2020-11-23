@@ -1,7 +1,7 @@
 var router = require("express").Router()
 var db = require("../models/workout")
 
-router.post("/api/Workout", function (req, res) {
+router.post("/api/newWorkout", function (req, res) {
     console.log(req.body)
     db.create(req.body).then(function (dbrecord) {
         console.log(dbrecord)
