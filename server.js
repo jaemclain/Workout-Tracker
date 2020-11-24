@@ -1,10 +1,12 @@
 const express = require("express");
-const mongooose = require("mongoose");
+const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
-
+const app = express();
 const PORT = process.env.PORT || 3000;
 
-const db = require("./models");
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/workouts",
@@ -13,13 +15,13 @@ mongoose.connect(
         useFindAndModify: false
     })
 
-    
+
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname + "./public/index.html"));
 });
 
 
-var apiroutes = require("./routes/apiRoutes")
+var apiroutes = require("./routes/apiroutes.js")
 app.use(apiroutes)
 
 
