@@ -23,8 +23,8 @@ $("#make-new").on("click", function (event) {
                     console.log(response)
                     location.reload()
                 })
-        });
-});
+        })
+})
 
 
 // UPDATE a previous workout
@@ -36,8 +36,7 @@ $.get("/api/getWorkout")
             $("#updateexcercise").attr("workoutid", previousworkout._id)
             for (let i = 0; i < previousworkout.excercises.length; i++) {
                 $("#previousworkout").append(`
-            <tr>
-            <td>${previousworkout.excercises[i].excerciseType}</td>
+            <tr><td>${previousworkout.excercises[i].excerciseType}</td>
             <td>${previousworkout.excercises[i].name}</td>
             <td>${previousworkout.excercises[i].sets}</td>
             <td>${previousworkout.excercises[i].reps}</td>
@@ -47,7 +46,7 @@ $.get("/api/getWorkout")
         } else {
             $("#updateexcercise").hide()
         }
-    });
+    })
 
 
 $("#updateexcercise").on("click", function (event) {
@@ -70,4 +69,4 @@ $("#updateexcercise").on("click", function (event) {
             console.log(response)
             location.reload()
         })
-});
+})
